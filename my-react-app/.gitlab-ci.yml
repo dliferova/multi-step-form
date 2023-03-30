@@ -1,0 +1,40 @@
+stages:
+  - build
+  - deploy
+
+build-node:
+  stage: build
+  tags: [docker]
+  only:
+    refs: [ dev ]
+  image: node:16-alpine
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - ./dist
+  cache:
+    key:
+      files:
+        - ./package-lock.json
+    paths:
+      - ./node_modules/
+
+deploy:
+  stage: deploy
+  image: alpine
+  only:
+    refs: [ dev ]
+  variables:
+    GIT_STRATEGY: none
+  needs:
+    - job: build-node
+      artifacts: true
+  before_script:
+    - apk add openssh-client sshpass
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+  script:
+    - sshpass -p "$SSH_PASSWORD" scp -o StrictHostKeyChecking=no -P $SSH_PORT -pqr ./dist/* $SSH_USER@$SSH_HOST:$SSH_ROOT_DIR/
