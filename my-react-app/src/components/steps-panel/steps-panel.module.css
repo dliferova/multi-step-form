@@ -1,4 +1,22 @@
+.stepsPanel {
+    display: block;
+    background-color: var(--color--purple);
+}
+
+.stepsPanelWrapper {
+
+}
+
+.stepsListWrapper {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.stepsList {
+    display: flex;
+    flex-direction: column;
+}
+
 .stepItem {
     display: block;
-    background-color: #535bf2;
 }
