@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './multi-step-form.module.css';
 import StepsPanel from "../steps-panel";
+import Form from "../form";
 
 const MultiStepForm = () => {
     return (
@@ -8,10 +9,7 @@ const MultiStepForm = () => {
             <div className={styles.formComponent}>
                 <div className={styles.formLayout}>
                     <StepsPanel/>
-                    <div>
-                        <span style={{color: 'red'}}>Personal info</span>
-                        <p>Please provide your name, email address, and phone number.</p>
-                    </div>
+                    <Form/>
                 </div>
             </div>
         </div>

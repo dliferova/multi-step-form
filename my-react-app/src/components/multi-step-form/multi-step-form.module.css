@@ -16,4 +16,5 @@
 .formLayout {
     display: grid;
     grid-template-columns: 274px 1fr;
+    padding: 20px;
 }
