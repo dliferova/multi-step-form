@@ -6,10 +6,10 @@ const StepsList = () => {
     return (
         <div className={styles.stepsListWrapper}>
             <ul className={styles.stepsList}>
-                <StepItem name={'Your info'}/>
-                <StepItem name={'Select plan'}/>
-                <StepItem name={'Add-ons'}/>
-                <StepItem name={'Summary'}/>
+                <StepItem name={'Your info'} isActive={true}/>
+                <StepItem name={'Select plan'} isActive={false}/>
+                <StepItem name={'Add-ons'} isActive={false}/>
+                <StepItem name={'Summary'} isActive={false}/>
             </ul>
         </div>
     );

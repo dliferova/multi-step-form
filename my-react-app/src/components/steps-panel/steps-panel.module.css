@@ -1,22 +1,73 @@
 .stepsPanel {
     display: block;
-    background-color: var(--color--purple);
+    position: relative;
 }
 
 .stepsPanelWrapper {
-
+    background: url('../../assets/bg-sidebar-desktop.svg');
+    min-height: 568px;
+    padding: 20px 10px;
 }
 
 .stepsListWrapper {
     max-width: 80%;
     margin: 0 auto;
+    color: var(--color--white);
 }
 
 .stepsList {
     display: flex;
     flex-direction: column;
+    counter-reset: tidbit-counter;
+}
+
+.stepItemWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 0 32px;
+}
+
+.stepItemWrapper:before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33px;
+    height: 33px;
+
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+
+    counter-increment: tidbit-counter;
+    content: counter(tidbit-counter);
+
+    border: 1px solid var(--color--white);
+    border-radius: 50%;
+}
+
+.stepItemWrapperActive:before {
+    background-color: var(--color--sky-blue);
+    border: none;
+    color: var(--color-denim);
 }
 
 .stepItem {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 20px;
+}
+
+.stepItemSubtext {
+    font-weight: lighter;
+}
+
+.stepItemSubtext:after {
+    content: counter(tidbit-counter);
+}
+
+.stepItemText {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
